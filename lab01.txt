@@ -1,0 +1,56 @@
+ubuntu@Ubuntu-GUI:~$ export GITHUB_USERNAME=KhotAbuch
+ubuntu@Ubuntu-GUI:~$ export GIST_TOKEN=***
+ubuntu@Ubuntu-GUI:~$ alias edit=nano
+ubuntu@Ubuntu-GUI:~$ mkdir -p KhotAbuch/workspace
+ubuntu@Ubuntu-GUI:~$ cd KhotAbuch/workspace
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ pwd
+/home/ubuntu/KhotAbuch/workspace
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ cd ..
+ubuntu@Ubuntu-GUI:~/KhotAbuch$ pwd
+/home/ubuntu/KhotAbuch
+ubuntu@Ubuntu-GUI:~/KhotAbuch$ mkdir -p workspace/tasks/
+ubuntu@Ubuntu-GUI:~/KhotAbuch$ mkdir -p workspace/projects/
+ubuntu@Ubuntu-GUI:~/KhotAbuch$ mkdir -p workspace/reports/
+ubuntu@Ubuntu-GUI:~/KhotAbuch$ cd workspace
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ wget https://nodejs.org/dist/v6.11.5/node-v6.11.5-linux-x64.tar.xz
+--2025-06-07 03:52:08--  https://nodejs.org/dist/v6.11.5/node-v6.11.5-linux-x64.tar.xz
+Resolving nodejs.org (nodejs.org)... 104.20.22.46, 104.20.23.46, 2606:4700:10::6814:162e, ...
+Connecting to nodejs.org (nodejs.org)|104.20.22.46|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 9356460 (8.9M) [application/x-xz]
+Saving to: ‘node-v6.11.5-linux-x64.tar.xz’
+
+node-v6.11.5-linux-x64.ta 100%[===================================>]   8.92M  23.7MB/s    in 0.4s    
+
+2025-06-07 03:52:09 (23.7 MB/s) - ‘node-v6.11.5-linux-x64.tar.xz’ saved [9356460/9356460]
+
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ tar -xf node-v6.11.5-linux-x64.tar.xz
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ rm -rf node-v6.11.5-linux-x64.tar.xz
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ mv node-v6.11.5-linux-x64 node
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ ls node/bin
+node  npm
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ echo ${PATH}
+/home/ubuntu/.local/share/gem/ruby/3.0.0/bin:/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/snap/bin:/home/ubuntu/go/bin
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ export PATH=${PATH}:`pwd`/node/bin
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ echo ${PATH}
+/home/ubuntu/.local/share/gem/ruby/3.0.0/bin:/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/snap/bin:/home/ubuntu/go/bin:/home/ubuntu/KhotAbuch/workspace/node/bin
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ mkdir scripts
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ cat > scripts/activate<<EOF
+export PATH=\${PATH}:`pwd`/node/bin
+EOF
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ source scripts/activate
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ gem install gist
+Fetching gist-6.0.0.gem
+Successfully installed gist-6.0.0
+Parsing documentation for gist-6.0.0
+Installing ri documentation for gist-6.0.0
+Done installing documentation for gist after 0 seconds
+1 gem installed
+
+A new release of RubyGems is available: 3.4.10 → 3.6.9!
+Run `gem update --system 3.6.9` to update your installation.
+
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ (umask 0077 && echo ${GIST_TOKEN} > ~/.gist)
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ export LAB_NUMBER=01
+ubuntu@Ubuntu-GUI:~/KhotAbuch/workspace$ ls
+node  projects  reports  scripts  tasks
